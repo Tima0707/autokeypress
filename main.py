@@ -230,7 +230,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.worker.state_changed.connect(self.on_worker_state_changed)
 
         self.app_running = True
-        self.global_hotkey_name = "f8"
+        self.global_hotkey_name = "f6"
         self.current_theme = "Dark"
         self.on_top_enabled = True
         self.really_quit = False
@@ -424,7 +424,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.worker.interval_max = max(dlg.min_spin.value(), dlg.max_spin.value())
             self.worker.hold_time = dlg.hold_spin.value()
             self.worker.shuffle = dlg.shuffle_check.isChecked()
-            self.global_hotkey_name = dlg.hotkey_edit.text().strip().lower() or "f8"
+            self.global_hotkey_name = dlg.hotkey_edit.text().strip().lower() or "f6"
             self.on_top_enabled = dlg.on_top_check.isChecked()
             self.current_theme = dlg.theme_combo.currentText()
 
@@ -500,7 +500,7 @@ class MainWindow(QtWidgets.QMainWindow):
             return False
 
         name = key_to_name(key)
-        hotkey_str = (self.global_hotkey_name or "f8").lower()
+        hotkey_str = (self.global_hotkey_name or "f6").lower()
 
         if name == hotkey_str:
             self.hotkeyTriggered.emit()
@@ -533,7 +533,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.worker.sequence = parse_sequence(sequence_str)
 
         self.worker.interval = float(self.settings.value("interval", 0.5))
-        self.global_hotkey_name = self.settings.value("hotkey", "f8").lower()
+        self.global_hotkey_name = self.settings.value("hotkey", "6").lower()
 
         self.on_top_enabled = self.settings.value("on_top", "true") == "true"
         self.setWindowFlag(QtCore.Qt.WindowStaysOnTopHint, self.on_top_enabled)
